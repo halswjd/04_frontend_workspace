@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <style>
+        div{box-sizing: border-box; /*border: 1px solid red;*/}
+        #navigator{width: 1000px; height: 40px;} /*임시스타일*/
+
+        #navi{
+            list-style-type: none;
+            padding: 0; /*list는 기본적으로 padding값 가짐*/
+            margin: 0;
+            height: 100%;
+        }
+
+        #navi>li{
+            float: left;
+            /* border: 1px solid blue; */
+            width: 15%;
+            height: 100%;
+            text-align: center;
+       
+        }
+
+        #navi a {
+            /* border: 1px solid orange;uj9n */
+            text-decoration: none;
+            color: orange;
+            font-size: 18px;
+            font-weight: 900;
+            width: 100%;
+            height: 100%;  /* a요소는 인라인태그 -> 속성값 무시함 */
+            display: block;
+            /* vertical-align: middle; 이미 block으로 바뀌어서 사용 불가 */
+            line-height: 35px;
+        }
+
+        #navi a:hover{
+            color: orangered;
+        }
+
+        #navi>li>ul{
+            list-style-type: none;
+            padding: 0;
+            display: none;
+        }
+        
+        #navi>li>ul a{font-size: 15px;}
+        #navi>li>a:hover+ul{display: block;}
+        #navi>li>ul:hover{display: block;}
+        
+    </style>
+</head>
+<body>
+    <div id="navigator">
+        <ul id="navi">
+            <!-- (li>a)*5 -->
+            <li><a href="#">Java</a></li>
+            <li><a href="#">Oracle</a></li>
+            <li><a href="#">Front-End</a>
+                <!-- ul>(li>a)*4 -->
+                <ul>
+                    <li><a href="#">HTML</a></li>
+                    <li><a href="#">CSS</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                    <li><a href="#">jQuery</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Server</a>
+                <ul>
+                    <li><a href="#">JDBC</a></li>
+                    <li><a href="#">Servlet</a></li>
+                    <li><a href="#">JSP</a></li>
+                    <li><a href="#">AJAX</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Framework</a>
+                <ul>
+                    <li><a href="#">myBatis</a></li>
+                    <li><a href="#">Spring</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
