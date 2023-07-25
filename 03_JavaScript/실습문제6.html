@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>실습문제6</title>
+</head>
+<body>
+    <h1>배열 실습 문제1</h1>
+    <br>
+   
+    <fieldset>
+        <legend>보기</legend>
+        <p id="p1">사과, 바나나, 당근</p>
+        <p id="p2">김밥, 치즈, 떡볶이, 햄버거</p>
+        <p id="p3">환타, 사이다, 콜라</p>
+        <p id="p4">고양이, 강아지</p>
+    </fieldset>
+    <input type="text" id="keyword" placeholder="입력"><br>
+    <button onclick="prompt();">전송 및 처리</button>
+
+    <script>
+        function prompt(){
+
+            let arr1 = document.getElementById("p1").innerText.split(", ");
+            let arr2 = document.getElementById("p2").innerText.split(", ");
+            let arr3 = document.getElementById("p3").innerText.split(", ");
+            let arr4 = document.getElementById("p4").innerText.split(", ");
+      
+            const keyword = document.getElementById("keyword").value;
+            const result = arr1.concat(arr2,arr3,arr4).indexOf(keyword);
+           
+            if(result == -1){
+                alert(keyword + "는(은) 배열에 존재하지 않습니다.")
+            }else{
+                alert(keyword + "는(은) 배열 index" + result + "번째 존재합니다.");
+            }
+
+        }
+    </script>
+
+
+
+</body>
+</html>

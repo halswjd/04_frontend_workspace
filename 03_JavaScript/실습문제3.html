@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>실습문제3</title>
+    <style>
+        #area{width: 300px; height: 100px; background-color: antiquewhite; border: 1px solid black;}
+    </style>
+</head>
+<body>
+    <h2>HTML 태그에 접근 테스트</h2>
+    구매자 : <input type="text" name="name" placeholder="구매자의 이름을 입력하세요"> <br><br>
+    상품명 : <input type="text" name="product"  id="product" placeholder="구매 상품명을 입력하세요"> <br><br>
+    가격 : <input type="text" name="price" placeholder="구매 가격을 입력하세요" id="price"><br><br>
+    <button onclick="print();">입력값 출력하기</button><br><br>
+    <div id="area"></div>
+
+    <script>
+        function print(){
+            var area = document.getElementById("area");
+
+            
+            var name = document.getElementsByTagName("input")[0].value;
+            var product = document.getElementById("product").value;
+            var price = document.getElementsByName("price")[0].value;
+            // var price = document.getElementById("price").value;
+
+            console.log(price);
+
+            var str = "구입자 : " + name + "<br>"; 
+            str += "구입상품 : " + product + "<br>";
+            str += "구매가격 : " + price + "원 <br>";
+
+            area.innerHTML = str;
+
+        }
+    </script>
+</body>
+</html>

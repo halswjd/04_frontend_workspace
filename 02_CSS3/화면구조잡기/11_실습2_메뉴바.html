@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        div{border: 1px solid red; box-sizing: border-box;}
+        #navigator{width: 1000px; height: 40px;}
+        #navi{
+            width: 100%;
+            list-style-type: none;
+            padding: 0;
+            height: 100%;
+            
+        }
+        #navi>li{
+            float: left; 
+            /* border: 1px solid blue; */
+            width: 20%;
+            height: 100%;
+            box-sizing: border-box;
+            text-align: center;            
+            line-height: 12px;
+        }
+        #navi a{
+            text-decoration: none;
+            color: rgb(109, 109, 109);
+            font-weight: 800;
+            display: block;
+        }
+        #navi a:hover{
+            color: black;
+        }
+        #navi>li>a:hover+ul{display: block;}
+        
+    </style>
+</head>
+<body>
+    <div id="navigator">
+        <ul id="navi">
+            <li><a href="#">교육과정</a></li>
+            <li><a href="#">교육원소개</a></li>
+            <li><a href="#">취업지원센터</a></li>
+            <li><a href="#">산학연계</a></li>
+            <li><a href="#">상담센터</a></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>실습문제2</title>
+    <style>
+        #area1{width: 100px;height: 100px; background-color: black;}
+        #area2{width: 100px;height: 100px; background-color: black;}
+    </style>
+</head>
+<body>
+    
+    <h3>1. 색상 선택 후 변경 버튼을 클릭하면 색상이 변경되도록 만들어 보시오</h3>
+    <div id="area1"></div>
+    <input type="color" id="color">
+    <button onclick="change();">변경</button>
+
+    <script>
+        function change(){
+            var color = document.getElementById("color");
+
+            var area1 = document.getElementById("area1");
+
+            area1.style.backgroundColor = color.value;
+
+        }
+
+    </script>
+
+    <h3>2. 버튼에 따라 크기 조절이 가능하게 만들기</h3>
+    <div id="area2"></div>
+    <!-- <button onclick="wh50();">50x50</button>
+    <button onclick="wh100();">원본(100x100)</button>
+    <button onclick="wh200();">200x200</button> -->
+
+    <button onclick="size(50);">50x50</button>
+    <button onclick="size(100);">원본(100x100)</button>
+    <button onclick="size(200);">200x200</button>
+    
+
+
+    <script>
+        /*
+        function wh50(){
+            var area2 = document.getElementById("area2");
+            area2.style.width = "50px";
+            area2.style.height = "50px";
+        }
+        function wh100(){
+            var area2 = document.getElementById("area2");
+            area2.style.width = "100px";
+            area2.style.height = "100px";
+        }
+        function wh200(){
+            var area2 = document.getElementById("area2");
+            area2.style.width = "200px";
+            area2.style.height = "200px";
+        }
+        */
+
+        function size(value){
+            var area2 = document.getElementById("area2");
+            area2.style.width = value + "px";
+            area2.style.height = value + "px";
+        }
+
+    </script>
+</body>
+</html>

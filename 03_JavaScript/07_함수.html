@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        .area{
+            border: 1px solid black;
+            width: 500px;
+            height: 100px;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>함수(function)</h1>
+
+    <h3 onclick="test1();">* 선언적 함수</h3> <!-- 우리가 그 동안 만든거 -->
+    <pre>
+    function 함수명([매개변수, 매개변수, ...]) {
+        해당 함수 호출시 실행할 소스코드;
+
+        [return 결과값;]
+    }
+    </pre>
+
+    <button onclick="test1();">실행확인</button>
+
+    <div id="area1" class="area"></div>
+
+    <script>
+        function test1(){
+            document.getElementById("area1").innerHTML += "test1() 함수 실행됨 <br>"
+        }
+    </script>
+
+    <br>
+
+    <h3>* 익명함수 (이름이 없는 함수></h3>
+    <pre>
+    변수|속성 = function([매개변수, 매개변수, ...]){
+        해당 함수 호출시 실행할 소스코드;
+
+        [return 결과값;]
+    }
+
+    특정 변수나 속성에 대입되는 함수 제시시 주로 사용
+    (주로 이벤트 핸들러(이벤트 발생시 실행할 함수) 작성시 사용)
+    </pre>
+
+    <button id="btn">실행확인</button>
+    <div id="area2" class="area"></div>
+
+    <script>
+        const btn = document.getElementById("btn");
+        btn.onclick = function(){ // 이름이 없어서 직접 호출 불가
+            // 이벤트 속성에 대입되는 function == 이벤트 핸들러
+            document.getElementById("area2").innerHTML += "이벤트 핸들러를 통해 실행됨";
+        }
+    </script>
+
+    <br><hr>
+
+    <h2>함수의 매개변수</h2>
+    <button onclick="test2('안녕하세요');">실행확인</button>
+    <button onclick="test2(10);">실행확인</button>
+    <button onclick="test2([1,2,3]);">실행확인</button>
+    <button onclick="test2(true);">실행확인</button>
+
+    <br>
+
+    <button onclick="test2(prompt('이름을 입력해주세요'));">실행확인</button>
+
+    <button onclick="test2('안녕하세요','반갑습니다');">실행확인</button>
+    <!-- 정의해둔 매개변수 개수보다 더 많은 매개변수 전달 => 가능, 오류는 안남 => 초과된 전달값은 무시됨 (지정된 개수만큼만 출력) -->
+    <button onclick="test2(10, true, '안녕');">실행확인</button>
+
+    <!-- 정의해둔 매개변수 개수보다 더 적게 전달하는 거 가능! => 단, undefined -->
+    <button onclick="test2();">실행확인</button> 
+    <!-- 매개변수 전달X => undifined 출력 -->
+    
+
+    <div id="area3" class="area"></div>
+
+    <script>
+        function test2(value){ // 자바와 달리 매개변수 제시시 자료형 지정X, 선언구문도 X => 오로지 변수명만
+            document.getElementById("area3").innerHTML = value;
+        }
+    </script>
+
+    <br>
+
+    <h3>* 매개변수 관련 arguments 배열 </h3>
+    <p>
+        함수 호출시 전달되는 값은 내부적으로 arguments 배열에 담김 <br>
+        * arguments : 모든 함수마다 내부적으로 하나씩 존재하는 배열 객체
+    </p>
+
+    <button onclick="test3(11,12,1,5,7);">실행확인</button>
+    <div id="area4" class="area"></div>
+
+    <script>
+        function test3(){
+            console.log(arguments); // 함수 생성시 매개변수 지정안했지만 오류도 안나고 arguments 배열에 담긴것을 확인
+            console.log(arguments[0]);
+
+            const area4 = document.getElementById("area4");
+
+            let sum = 0;
+            for(let i=0; i<arguments.length; i++){
+                sum += arguments[i];
+            }
+
+            area4.innerHTML += "총합 : " + sum + "<br>";
+            area4.innerHTML += "평균 : " + sum/arguments.length + "<br>";
+        }
+    </script>
+
+    <br>
+
+    <h3>* 매개변수에 this 관련 전달하기</h3>
+
+    <button onclick="test4(this);">버튼1</button>
+    <!-- this : 현재 요소 객체를 의미 -->
+    <button onclick="test4(this.innerHTML)">버튼2</button> <!-- 버튼2 -->
+    <input type="button" value="버튼3" onclick="test4(this.value);"> <!-- 버튼3 -->
+    <button id="btn4" onclick="test4(this.id)">버튼4</button> <!-- btn4 -->
+
+    <script>
+        function test4(a){
+            console.dir(a); // 현재 이벤트가 발생한 그 요소객체
+        }
+    </script>
+
+    <br><br>
+    
+    <button onclick="test5(this);">클릭</button>
+
+    <script>
+        function test5(el){
+            console.dir(el);
+            el.style.backgroundColor = "red";
+            el.innerHTML = "클릭됨";
+        }
+    </script>
+
+    <hr>
+
+    <h2>함수의 리턴</h2>
+
+    <h3>* 일반적인 값 리턴</h3>
+
+    <button onclick="test6();">실행확인</button>
+    <div id="area5" class="area"></div>
+
+    <script>
+        // 1~100 사이에 숫자 중 랜덤값 구해서 반환해주는 함수
+        function ran(){
+            const random = parseInt(Math.random()*100 + 1); // 시작수는 더하고 끝수는 곱한다(자바와 동일)
+            return random;
+        }
+
+        function test6(){
+            const area5 = document.getElementById("area5");
+            area5.innerHTML += "랜덤값 : " + ran() + "<br>";
+        }
+    </script>
+
+    <h3>* 익명함수를 리턴</h3>
+    이름 : <input type="text" id="userName">
+    <button onclick="test7()();">실행확인</button>
+
+    <script>
+        function test7(){
+            let inputEl = document.getElementById("userName");
+            // console.log(inputEl.value);
+            return function(){
+                alert(inputEl.value);
+                // 함수 넘겨준다해서 함수가 실행되게해서 넘기는게 아님
+                // 함수 넘겨주고 실행되게 할 수 있게끔 리턴되는 곳에 '()' 추가 해줘야함!
+            }
+
+        }
+    </script>
+
+
+
+<br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

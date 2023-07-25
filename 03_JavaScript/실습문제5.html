@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>실습문제5</title>
+</head>
+<body>
+    <hr style="border: 3px solid black;"><br>
+    <h1>간이 계산기 만들기</h1>
+
+    첫번째 값 : <input type="text" id="num1"> <br>
+    두번째 값 : <input type="text" id="num2"> <br>
+
+    <input type="button" value="+" onclick="calculator('+');">
+    <input type="button" value="-" onclick="calculator('-');">
+    <input type="button" value="x" onclick="calculator('x');">
+    <input type="button" value="/" onclick="calculator('/');">
+    <input type="button" value="%" onclick="calculator('%');">
+
+    <br><br>
+    계산결과 : <br>
+    <div id="area1"></div>
+    <hr>
+
+    <script>
+        function calculator(value){
+            const area1 = document.getElementById("area1");
+            const num1 = document.getElementById("num1").value;
+            const num2 = document.getElementById("num2").value;
+
+
+            /*switch문*/
+            switch(value){
+                case "+" :
+                area1.innerHTML = Number(num1) + Number(num2)
+                break;
+
+                case "-" :
+                area1.innerHTML = Number(num1) - Number(num2)
+                break;
+
+                case "x" :
+                area1.innerHTML = Number(num1) * Number(num2)
+                break;
+
+                case "/" :
+                if(num1==0 || num2==0){
+                    area1.innerHTML = "0을 입력하셨습니다.";
+                }else{
+                    area1.innerHTML = Number(num1) / Number(num2)
+                }
+                break;
+
+                case "%" :
+                area1.innerHTML = Number(num1) % Number(num2)
+                break;
+            }
+
+        }
+    </script>
+
+</body>
+</html>

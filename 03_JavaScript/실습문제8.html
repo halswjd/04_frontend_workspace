@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>실습문제8</title>
+</head>
+<body>
+    <h1>배열 실습 문제3</h1>
+    <br>
+    <fieldset>
+        <legend>입력</legend>
+        <input type="text" id="input"> <button onclick="push();">입력</button>
+    </fieldset>
+    <input type="text" id="result">
+
+    <script>
+        let arr = [];
+        function push(){
+            let input = document.getElementById("input");
+            let result = document.getElementById("result");
+
+            arr.push(input.value);
+            input.value = "";
+
+            result.value = arr;
+            
+        }
+    </script>
+</body>
+</html>
