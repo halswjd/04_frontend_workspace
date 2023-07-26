@@ -40,21 +40,22 @@
         function test1(){
             const arr = ["Dry Mango", 4000, "pickle", ["mango","sugar"]];
             // 자바스크립트에서 배열 = 자바에서의 컬렉션(ArrayList)과 유사
-
+            
             const product = {
                 pName:"Dry Mango",
                 price:4000,
                 "kind":"pickle",
                 ingredient:["mango", "sugar"]
             };
-            // 자바스크리브에서의 객체 == 자바에서의 컬렉션(HashMap)
-
-            console.log(product);
-            console.log(typeof(product));
-
+            // 자바스크립트에서의 객체 == 자바에서의 컬렉션(HashMap)
+            
+            console.log(product); // {pName: 'Dry Mango', price: 4000, kind: 'pickle', ingredient: Array(2)}
+            // 배열은 [], 객체는 {} 표현되는구나
+            console.log(typeof(product)); // object
+            
             const area1 = document.getElementById("area1");
             area1.innerHTML += "product : " + product + "<br>"; // toString() 메소드가 자동으로 호출됨 => 우리가 나중에 재정의 해볼거임
-
+            
             // 객체의 속성에 접근하는 방법
             // 방법1. 대괄호를 이용하는 방법 : 객체명["속성명"]
             area1.innerHTML += "<b>객체명['속성명']으로 접근하기</b><br>";
@@ -71,7 +72,8 @@
             area1.innerHTML += "kind : " + product.kind + "<br>";
             area1.innerHTML += "ingredient : " + product.ingredient + "<br>";
             area1.innerHTML += "ingredient[1] : " + product.ingredient[1] + "<br>";
-
+            
+            
         }
     </script>
 
@@ -164,7 +166,7 @@
                     // area4.innerHTML += "eat 메소드가 호출되었습니다. <br>"
                     // area4.innerHTML += food;
 
-                    // 비글 종류인 복실이가 food을(를) 먹고 있어요
+                    // 말티즈 종류인 조비가 food을(를) 먹고 있어요 출력
                     // 메소드 속성에서 같은 객체내의 속성에 접근하고자 한다면 this. 을 붙여야함
 
                     // area4.innerHTML += kind + "종류인 " + name + "가 " + food + "을(를) 먹고 있어요. <br>";
@@ -180,6 +182,8 @@
             // console.log(dog);
 
             dog.eat("사과");
+            dog.eat("바나나");
+            
             // window.alert("ㅋㅋㅋ"); 이거랑 같은 맥락, 자스에서 제공하는 window 객체의 alert함수 이용하는거임
         }
     </script>
@@ -225,7 +229,7 @@
             const area5 = document.getElementById("area5");
             area5.innerHTML += "student : " + student/*.toString()*/ + "<br>"; // toString() 메소드 자동적으로 호출됨 
             
-            // "속성명" in 객체명 : 객체에 해당 속성이 존재할경우 trun, 아니면 false 반환
+            // "속성명" in 객체명 : 객체에 해당 속성이 존재할경우 true, 아니면 false 반환
             area5.innerHTML += "name 속성이 있나요? : " + ("name" in student) + "<br>"; // true
             area5.innerHTML += "age 속성이 있나요? : " + ("age" in student) + "<br>"; // false
 
