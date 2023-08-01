@@ -2,92 +2,164 @@
 <html lang="en">
 <head>
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <style>
-        input{
-            border: none;
-            border-bottom: 1px dashed black;
-        }
         #out{
-            border: 1px solid lightgray;
-            /* width: 300px; */
-            /* height: 300px; */
+            border: 2px solid skyblue;
+            background-color: rgb(213, 242, 254);
+            width: 600px;
+            height: 500px;
+            position: relative;
         }
-        input[name^=email]{
-            width: 75px;
+        
+        #wrap{
+            border: 2px solid lightgray;
+            background-color: rgb(240, 240, 240);
+            width: 400px;
+            height: 350px;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
         }
+
+        input{ 
+            border: none;
+            background-color: rgb(240, 240, 240);
+            border-bottom: 1px dashed black;
+            width: 90%;
+        }
+    
         .alert{
-            font-size: 10px;
+            font-size: 3px;
             color: gray;
+        
         }
+
+        th{
+           text-align: left;
+           font-size: 12px;
+        }
+
+        table{margin: auto;}
+
+        form{margin-top: 40px;}
+
+        button{
+            width: 100%;
+            height: 50%;
+            border: none;
+            background-color: darkseagreen;
+            font-weight: bold;
+        }
+        td{width: 210px;}
+
     </style>
 </head>
 <body>
     
-    <form action="test.do" method="post">
-        <div id="out">
-            <table>
-                <tr>
-                    <th width="200px">아이디</th>
-                    <td><input type="text" name="userId" id="userId"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td class="alert" id="idArea"></td>
-                </tr>
-                <tr>
-                    <th>패스워드</th>
-                    <td><input type="password" name="userPwd" id="userPwd"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td id="pwdArea" class="alert"></td>
-                </tr>
-                <tr>
-                    <th>패스워드 확인</th>
-                    <td><input type="password" id="userPwd2"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td class="alert" id="pwdArea2"></td>
-                </tr>
-                <tr>
-                    <th>이메일</th>
-                    <td><input type="text" name="email1">@<input type="text" name="email2"></td>
-                </tr>
-                <tr>
-                    <th>주소</th>
-                    <td><input type="text" name="address1"></td>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td><input type="text" name="address2"></td>
-                </tr>
-        
-            </table>
-     
-            <button>가입</button>
-
-        </div>
-    </form>
-
-    <script>
-        const userId = document.getElementById("userId");
-        const userPwd = document.getElementById("userPwd");
-
-
-        userPwd.onclick = function(){
-
-            if(userId.value == ""){
-                document.getElementById("idArea").innerHTML = "필수 입력 항목입니다."
-            }
-
-            document.getElementById("pwdArea").innerHTML = "영문자 대/소문자 특수문자, 숫자 포함 8~32자"
-        
-        }
-
-        
-        
-    </script>
+    <div id="out">
+        <div id="wrap">
+            <form action="test.do" method="post">
+                <table >
+                    <tr>
+                        <th width="90px">아이디</th>
+                        <td><input type="text" name="userId" id="userId" required></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td class="alert" id="idArea"></td>
+                    </tr>
+                    <tr>
+                        <th>패스워드</th>
+                        <td><input type="password" name="userPwd" id="userPwd" required></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td id="pwdArea" class="alert"></td>
+                    </tr>
+                    <tr>
+                        <th>패스워드 확인</th>
+                        <td><input type="password" id="userPwd2" required></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td class="alert" id="pwdArea2"></td>
+                    </tr>
+                    <tr>
+                        <th>이메일</th>
+                        <td><input type="text" name="email1" id="email"></td>
+                    </tr>
+                    <tr>
+                        <th>주소</th>
+                        <td><input type="text" name="address1" class="address"></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><input type="text" name="address2" class="address"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" height="90px"><button>가 입</button></td>
+                    </tr>
+            
+                </table> 
+         
+                
     
+            </form>
+        </div>
+
+    </div>
+    
+    <script>
+
+        $(function(){
+
+            $("#userPwd").click(function(){
+                if($("#userId").val() == ""){
+                    $("#idArea").text("필수 입력 항목입니다.")
+                }
+                $("#pwdArea").text("영문자 대/소문자 특수문자, 숫자 포함 8~32자");
+            })
+
+            
+            $("#userPwd2").click(function(){
+                if($("#userPwd").val() == ""){
+                    $("#pwdArea").text("필수 입력 항목입니다.")
+                }
+                if($("#userId").val() == ""){
+                    $("#idArea").text("필수 입력 항목입니다.")
+                }
+            })
+  
+            $("#email, .address").click(function(){
+                if($("#userPwd").val() == ""){
+                    $("#pwdArea").text("필수 입력 항목입니다.")
+                }
+                if($("#userId").val() == ""){
+                    $("#idArea").text("필수 입력 항목입니다.")
+                }
+                if($("#userPwd2").val() == ""){
+                    $("#pwdArea2").text("필수 입력 항목입니다.")
+                }
+            })
+
+            $("#userId").click(function(){
+                $("#idArea").text("");
+            }) 
+            $("#userPwd2").click(function(){
+                $("#pwdArea2").text("");
+            })
+            
+            // $(this).click(function(){
+            //     // console.log($(this).parents("tr"));
+            //     $(this).parents().css("backgroundColor", "pink")
+            // })
+        })
+        </script>
+
+
 </body>
 </html>
