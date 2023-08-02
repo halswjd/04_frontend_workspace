@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+</head>
+<body>
+
+    <h3>* fadeIn()과 fadeOut(), fadeToggle()</h3>
+    <p style="background-color: red; opacity: 0.5;"> <!-- opacity : 투명도 -->
+        선택된 요소가 점점 투명해지면서 사라지고 점점 선명해지면서 보여지게 해주는 메소드
+    </p>
+
+    <button onclick="test1();">숨기기</button>
+    <button onclick="test2();">보여주기</button>
+    <button onclick="test3();">토글</button>
+    
+    <br><br>
+    
+    <img  id="onion" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAyMDlfMjA5%2FMDAxNjc1ODkxOTE0MzUx.pZR1gAUs5PpqRZCApRu3gMnoOGvAyCgIg33g2xANslMg.SJ11Q9OafacaQ0Xgm1gEVkUfH9gIOL1-K1OZG64GMyYg.JPEG.useop22%2FIMG_4830.JPG&type=sc960_832" alt="">
+
+    <script>
+        function test1(){
+            $("#onion").fadeOut(2000);
+        }
+
+        function test2(){
+            $("#onion").fadeIn(2000);
+        }
+
+        function test3(){
+            $("#onion").fadeToggle(2000);
+        }
+    </script>
+
+</body>
+</html>
