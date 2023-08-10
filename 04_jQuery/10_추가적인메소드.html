@@ -92,8 +92,17 @@
 
             // 2) each 메소드 이용
             $.each(student, function(key, value){
-                console.log("속성명 : " + key + ", 속성값 : " + value);
-            })
+                // console.log("속성명 : " + key + ", 속성값 : " + value);
+                console.log(key, value)
+            });
+            console.log("======여기=========================================")
+
+            console.log(student);
+
+            $(student).each(function(key, value) {
+                console.log(key, value);
+                console.log(value.name);
+            });
 
             $("#btn").click(function(){
                 // DB로 조회했다는 가정하에
